@@ -6,7 +6,7 @@ import pandas as pd
 try:
     API_KEY = st.secrets["api_key"]
 except:
-    API_KEY = "YOUR_LOCAL_KEY_FOR_TESTING"
+    API_KEY = "LOCAL_KEY_FOR_TESTING"
 
 def get_video_id(url):
     """
