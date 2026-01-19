@@ -5,7 +5,7 @@ import streamlit as st
 
 # --- CONFIGURATION ---
 try:
-    API_KEY = st.secrets[api_key]
+    API_KEY = st.secrets["api_key"]
 except:
     API_KEY = "LOCAL_KEY_FOR_TESTING"
 
