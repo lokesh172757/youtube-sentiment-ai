@@ -1,0 +1,11 @@
+text
+streamlit
+pandas
+plotly
+matplotlib
+wordcloud
+emoji
+google-api-python-client
+transformers
+torch --index-url https://download.pytorch.org/whl/cpu
+scipy
