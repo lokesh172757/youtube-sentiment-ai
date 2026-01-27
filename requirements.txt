@@ -9,3 +9,4 @@ transformers
 torch
 scipy
 scikit-learn
+FPDF
