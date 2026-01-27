@@ -1,6 +1,7 @@
 __pycache__/
 .streamlit/
-verify_app.py/
-verify_logic.py/
-verify_summary.py/
+
+verify_app.py
+verify_logic.py
+verify_summary.py
 verify_v2.py
