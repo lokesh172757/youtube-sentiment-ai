@@ -10,3 +10,4 @@ torch
 scipy
 scikit-learn
 FPDF
+deep_translator
