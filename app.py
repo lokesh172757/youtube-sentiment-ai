@@ -19,18 +19,18 @@ st.markdown("""
     
     /* Root Design Tokens */
     :root {
-        --primary: #6366f1;
-        --secondary: #8b5cf6;
-        --accent: #ec4899;
+        --primary: #FF0000;
+        --secondary: #CC0000;
+        --accent: #FF0000;
         --success: #10b981;
         --warning: #f59e0b;
         --error: #ef4444;
-        --bg-dark: #07090e;
-        --text-primary: #ffffff;
-        --text-secondary: #cbd5e1;
-        --text-muted: #94a3b8;
-        --glass: rgba(255, 255, 255, 0.03);
-        --glass-border: rgba(255, 255, 255, 0.08);
+        --bg-dark: #0E1117;
+        --text-primary: #FFFFFF;
+        --text-secondary: #E1E8ED;
+        --text-muted: #8b9bb4;
+        --glass: rgba(22, 27, 34, 1);
+        --glass-border: rgba(48, 54, 61, 1);
     }
     
     /* Base Layout */
@@ -46,20 +46,8 @@ st.markdown("""
         content: "";
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: 
-            radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.12), transparent 45%),
-            radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.07), transparent 40%),
-            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.06), transparent 50%),
-            radial-gradient(circle at 80% 15%, rgba(139, 92, 246, 0.08), transparent 40%);
+        background-color: var(--bg-dark);
         z-index: -1;
-        filter: blur(120px);
-        animation: meshMove 30s infinite alternate ease-in-out;
-    }
-
-    @keyframes meshMove {
-        0% { transform: scale(1) translate(0px, 0px); }
-        50% { transform: scale(1.1) translate(2% , 4%); }
-        100% { transform: scale(0.95) translate(-1%, -3%); }
     }
     
     /* Branding Hide */
@@ -68,37 +56,34 @@ st.markdown("""
     /* Bento Cards */
     .bento-card {
         background: var(--glass);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
         border: 1px solid var(--glass-border);
-        border-radius: 24px;
+        border-radius: 8px;
         padding: 24px;
-        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         height: 100%;
         position: relative;
         overflow: hidden;
     }
 
     .bento-card:hover {
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.15);
+        transform: translateY(-2px);
+        background: rgba(33, 38, 45, 1);
+        border-color: rgba(139, 148, 158, 1);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
 
     /* Sidebar Refinement */
     [data-testid="stSidebar"] {
-        background: rgba(7, 9, 14, 0.85) !important;
-        backdrop-filter: blur(25px);
+        background: var(--bg-dark) !important;
         border-right: 1px solid var(--glass-border);
     }
     [data-testid="stSidebar"] * { color: var(--text-primary) !important; }
     
     .sidebar-pill {
-        background: rgba(99, 102, 241, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.2);
-        border-radius: 16px;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 8px;
         padding: 16px;
         text-align: center;
         margin-bottom: 24px;
@@ -108,16 +93,13 @@ st.markdown("""
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Poppins', sans-serif;
         color: var(--text-primary) !important;
-        font-weight: 800;
-        letter-spacing: -0.04em;
+        font-weight: 600;
+        letter-spacing: -0.02em;
         margin-bottom: 0.8rem !important;
     }
     
     .glow-header {
-        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+        color: var(--text-primary);
     }
 
     /* Global Text Contrast (CATCH-ALL) */
@@ -129,130 +111,142 @@ st.markdown("""
 
     /* Metrics */
     [data-testid="stMetricValue"] {
-        font-size: 3.2rem !important;
-        font-weight: 800 !important;
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
         color: var(--text-primary) !important;
-        filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
     }
     
     [data-testid="stMetricLabel"] {
         color: var(--text-muted) !important;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.05em;
     }
 
     .glowing-icon {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
         margin-bottom: 12px;
-        filter: drop-shadow(0 0 15px currentColor);
     }
 
     /* Action Elements */
     .stButton > button {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        background-color: var(--primary) !important;
         color: white !important;
         border: none !important;
-        border-radius: 18px !important;
-        padding: 14px 30px !important;
-        font-weight: 800 !important;
-        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
-        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3) !important;
+        border-radius: 4px !important;
+        padding: 10px 24px !important;
+        font-weight: 600 !important;
+        transition: background-color 0.2s ease-in-out !important;
     }
     
     .stButton > button:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5) !important;
+        background-color: var(--secondary) !important;
     }
     
+    /* Specific Style for Download PDF Button */
+    .stDownloadButton > button {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+        border: 1px solid #000000 !important;
+        border-radius: 4px !important;
+        font-weight: 600 !important;
+    }
+
+    .stDownloadButton > button:hover {
+        background-color: #E1E8ED !important;
+    }
+
     .stTextInput > div > div > input {
-        background: rgba(255, 255, 255, 0.04) !important;
+        background: var(--glass) !important;
         border: 1px solid var(--glass-border) !important;
-        border-radius: 16px !important;
+        border-radius: 4px !important;
         color: white !important;
-        padding: 14px 20px !important;
-        backdrop-filter: blur(10px);
+        padding: 10px 16px !important;
     }
 
     /* Tabs Visibility */
     .stTabs [data-baseweb="tab-list"] {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 18px;
-        padding: 6px;
+        background: transparent;
+        border-bottom: 1px solid var(--glass-border);
+        padding: 0;
     }
 
     .stTabs [data-baseweb="tab"] {
         color: var(--text-muted) !important;
-        font-weight: 600;
+        font-weight: 500;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 8px;
     }
 
     .stTabs [aria-selected="true"] {
-        background: rgba(99, 102, 241, 0.12) !important;
+        background: transparent !important;
         color: var(--text-primary) !important;
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        border-radius: 14px !important;
+        border-bottom: 2px solid var(--primary) !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
     }
 
     /* Dropdowns (Critical Fixes) */
     [data-baseweb="popover"], [data-baseweb="menu"], [role="listbox"] {
-        background-color: #0f172a !important;
+        background-color: var(--glass) !important;
         border: 1px solid var(--glass-border) !important;
     }
 
     [role="option"] {
-        background-color: #0f172a !important;
+        background-color: var(--glass) !important;
         color: white !important;
     }
-    [role="option"]:hover { background-color: var(--primary) !important; }
+    [role="option"]:hover { background-color: rgba(48, 54, 61, 1) !important; }
 
     /* Alerts & Notifications (Force Visibility) */
     [data-baseweb="notification"], .stAlert, div[class*="stAlert"] {
-        background: rgba(10, 15, 30, 0.95) !important;
-        backdrop-filter: blur(25px) !important;
+        background: var(--glass) !important;
         border: 1px solid var(--glass-border) !important;
-        border-radius: 20px !important;
-        box-shadow: 0 15px 45px rgba(0,0,0,0.5) !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
         margin-bottom: 1.5rem !important;
     }
 
     /* Force all text inside any kind of alert to white */
     .stAlert p, .stAlert span, .stAlert div, .stAlert label,
     [data-baseweb="notification"] * { 
-        color: #ffffff !important; 
+        color: var(--text-primary) !important; 
         font-weight: 500 !important;
     }
     
-    .stAlert[kind="info"] { border-left: 6px solid var(--primary) !important; }
-    .stAlert[kind="success"] { border-left: 6px solid var(--success) !important; }
-    .stAlert[kind="warning"] { border-left: 6px solid var(--warning) !important; }
-    .stAlert[kind="error"] { border-left: 6px solid var(--error) !important; }
+    .stAlert[kind="info"] { border-left: 4px solid var(--primary) !important; }
+    .stAlert[kind="success"] { border-left: 4px solid var(--success) !important; }
+    .stAlert[kind="warning"] { border-left: 4px solid var(--warning) !important; }
+    .stAlert[kind="error"] { border-left: 4px solid var(--error) !important; }
 
     /* Captions and Small Text */
     [data-testid="stCaptionContainer"], .stCaption, small {
-        color: var(--text-secondary) !important;
-        font-size: 0.95rem !important;
-        line-height: 1.5 !important;
+        color: var(--text-muted) !important;
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
     }
 
     /* Code Blocks (Moderation / AI Code) */
     code, .stCodeBlock {
-        background: rgba(0, 0, 0, 0.4) !important;
+        background: var(--glass) !important;
         border: 1px solid var(--glass-border) !important;
-        border-radius: 12px !important;
-        color: #ec4899 !important;
+        border-radius: 4px !important;
+        color: var(--error) !important;
         padding: 4px 8px !important;
     }
 
     /* Raw Data Table Visibility */
     .stDataFrame, [data-testid="stTable"] {
-        background: rgba(0,0,0,0.2) !important;
-        border-radius: 16px !important;
+        background: var(--glass) !important;
+        border-radius: 8px !important;
     }
     .stDataFrame * { color: var(--text-secondary) !important; }
 
     /* Tables headers */
     [data-testid="StyledDataFrameRowHeaderCell"], [data-testid="StyledDataFrameHeaderCell"] {
-        background-color: rgba(99, 102, 241, 0.1) !important;
+        background-color: rgba(48, 54, 61, 1) !important;
         color: white !important;
     }
 
@@ -280,15 +274,15 @@ except Exception as e:
 # 4. Sidebar
 st.sidebar.markdown("""
 <div class="sidebar-pill">
-    <h1 style='font-size: 2.5rem; margin: 0; filter: drop-shadow(0 0 10px #6366f1);'>🤖</h1>
+    <h1 style='font-size: 2.5rem; margin: 0; color: #FF0000;'>🤖</h1>
     <h2 class="glow-header" style='font-size: 1.5rem; margin: 0.5rem 0;'>YS Analysis</h2>
 </div>
 """, unsafe_allow_html=True)
 st.sidebar.markdown("""
-<div style='background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%); 
+<div style='background: var(--glass); 
             padding: 1rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px; 
+            border: 1px solid var(--glass-border);
             margin-bottom: 1rem;'>
     <p style='margin: 0; text-align: center; font-size: 0.9rem; line-height: 1.6;'>
         Analyze comments using <strong>State-of-the-Art</strong> Natural Language Processing
@@ -341,8 +335,8 @@ def render_single_mode():
         st.sidebar.subheader("🔍 Filter Results")
         
         # Translation Toggle
-        if st.sidebar.checkbox("🌍 Translate to English", key="enable_translation"):
-             st.sidebar.info("Next analysis will translate foreign comments.")
+        if st.sidebar.checkbox("🌍 Translate comments to English", key="enable_translation"):
+             st.sidebar.info("Next analysis will translate all foreign language comments to English.")
              
         sentiment_filter = st.sidebar.multiselect("Filter by Sentiment", ["Positive", "Negative", "Neutral"], default=["Positive", "Negative", "Neutral"])
         keyword_filter = st.sidebar.text_input("Filter by Keyword", key="single_kw")
@@ -433,15 +427,15 @@ def render_single_mode():
             c_left, c_right = st.columns(2)
             with c_left:
                 fig = px.pie(data_to_plot, names='Sentiment', title='Mood Distribution', color='Sentiment', hole=0.6,
-                                color_discrete_map={'Positive':'#10b981', 'Negative':'#ef4444', 'Neutral':'#6366f1'})
-                fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#ffffff", margin=dict(t=50, b=0, l=0, r=0))
+                                color_discrete_map={'Positive':'#10b981', 'Negative':'#ef4444', 'Neutral':'#E1E8ED'})
+                fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED", margin=dict(t=50, b=0, l=0, r=0))
                 st.plotly_chart(fig, use_container_width=True)
             
             with c_right:
                 if 'Published_At' in data_to_plot.columns:
                     fig_time = px.histogram(data_to_plot, x="Published_At", color="Sentiment", title="Sentiment Over Time",
-                                            color_discrete_map={'Positive':'#10b981', 'Negative':'#ef4444', 'Neutral':'#6366f1'})
-                    fig_time.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#ffffff")
+                                            color_discrete_map={'Positive':'#10b981', 'Negative':'#ef4444', 'Neutral':'#E1E8ED'})
+                    fig_time.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
                     st.plotly_chart(fig_time, use_container_width=True)
 
             # AI Reply Assistant (In Dashboard)
@@ -463,8 +457,8 @@ def render_single_mode():
                 st.subheader("☁️ Word Cloud")
                 if not data_to_plot.empty:
                     text_combined = " ".join(data_to_plot['Clean_Text'])
-                    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text_combined)
-                    fig, ax = plt.subplots()
+                    wordcloud = WordCloud(width=800, height=400, background_color='#0E1117').generate(text_combined)
+                    fig, ax = plt.subplots(facecolor='#0E1117')
                     ax.imshow(wordcloud, interpolation='bilinear')
                     ax.axis("off")
                     st.pyplot(fig)
@@ -474,14 +468,18 @@ def render_single_mode():
                 if all_emojis:
                     emoji_counts = Counter(all_emojis).most_common(10)
                     emoji_df = pd.DataFrame(emoji_counts, columns=['Emoji', 'Count'])
-                    st.plotly_chart(px.bar(emoji_df, x='Emoji', y='Count'), use_container_width=True)
+                    fig_emoji = px.bar(emoji_df, x='Emoji', y='Count')
+                    fig_emoji.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
+                    st.plotly_chart(fig_emoji, use_container_width=True)
             
             st.subheader("🧩 Top Themes (Bi-grams)")
             if not data_to_plot.empty:
                 bigrams = logic.extract_bigrams(data_to_plot['Clean_Text'].dropna())
                 if bigrams:
                     bg_df = pd.DataFrame(bigrams, columns=['Phrase', 'Count'])
-                    st.plotly_chart(px.bar(bg_df, x='Count', y='Phrase', orientation='h'), use_container_width=True)
+                    fig_bg = px.bar(bg_df, x='Count', y='Phrase', orientation='h')
+                    fig_bg.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
+                    st.plotly_chart(fig_bg, use_container_width=True)
 
         with tab3: # Personas
             st.subheader("👥 Audience Squads")
@@ -489,6 +487,7 @@ def render_single_mode():
                 persona_counts = data_to_plot['Persona'].value_counts().reset_index()
                 persona_counts.columns = ['Persona', 'Count']
                 fig_p = px.pie(persona_counts, names='Persona', values='Count', hole=0.4, title="Audience Breakdown")
+                fig_p.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
                 st.plotly_chart(fig_p, use_container_width=True)
                 
                 st.markdown("### Drill Down")
@@ -522,8 +521,9 @@ def render_single_mode():
         with tab6: # Moderate
             toxic_df = data_to_plot[data_to_plot['Is_Toxic'] == True]
             if not toxic_df.empty:
-                st.error(f"Found {len(toxic_df)} toxic comments.")
-                for i, r in toxic_df.head(10).iterrows(): st.code(f"{r['Author']}: {r['Comment']}")
+                st.markdown(f"**Found {len(toxic_df)} toxic comments:**")
+                for i, r in toxic_df.head(10).iterrows():
+                    st.markdown(f"<div style='background-color: #450a0a; border: 1px solid #ef4444; border-radius: 4px; padding: 10px; margin-bottom: 10px; color: #fca5a5;'><strong>{r['Author']}</strong>: {r['Comment']}</div>", unsafe_allow_html=True)
             else: st.success("No toxic comments.")
 
         with tab7: # Raw Data
@@ -537,8 +537,10 @@ def render_single_mode():
             
             # Generate PDF on the fly for the download button
             if not data_to_plot.empty:
+                st.markdown('<div class="stDownloadButton">', unsafe_allow_html=True)
                 pdf_bytes = logic.generate_pdf_report(data_to_plot)
                 st.download_button("Download PDF Report 📄", pdf_bytes, "sentiment_report.pdf", "application/pdf")
+                st.markdown('</div>', unsafe_allow_html=True)
             else:
                 st.warning("No data to generate report.")
                 
@@ -606,12 +608,13 @@ def render_battle_mode():
                     m_b = get_metrics(df_b)
                     
                     with col_a:
+                        st.subheader("Video A (You)")
                         st.markdown(f"""
                         <div class="bento-card" style="border-color: rgba(16, 185, 129, 0.3); text-align: center;">
                             <div style="font-size: 1.5rem; margin-bottom: 10px;">🎯</div>
-                            <div style="font-size: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">Video A (You)</div>
+                            <div style="font-size: 1rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Video A (You)</div>
                             <div style="font-size: 3rem; font-weight: 800; color: #10b981; margin: 15px 0;">{m_a[0]:.1f}%</div>
-                            <div style="font-size: 0.9rem; color: #cbd5e1;">Positive Sentiment</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Positive Sentiment</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
@@ -622,12 +625,13 @@ def render_battle_mode():
                         st.metric("Toxic Comments", m_a[4])
 
                     with col_b:
+                        st.subheader("Video B (Competitor)")
                         st.markdown(f"""
                         <div class="bento-card" style="border-color: rgba(239, 68, 68, 0.3); text-align: center;">
                             <div style="font-size: 1.5rem; margin-bottom: 10px;">⚔️</div>
-                            <div style="font-size: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">Video B (Competitor)</div>
+                            <div style="font-size: 1rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Video B (Competitor)</div>
                             <div style="font-size: 3rem; font-weight: 800; color: #ef4444; margin: 15px 0;">{m_b[0]:.1f}%</div>
-                            <div style="font-size: 0.9rem; color: #cbd5e1;">Positive Sentiment</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Positive Sentiment</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
@@ -659,6 +663,7 @@ def render_battle_mode():
                         
                         fig_sent = px.histogram(combined_df, x="Sentiment", color="Video", barmode="group",
                                               color_discrete_map={'Video A': '#00CC96', 'Video B': '#EF553B'})
+                        fig_sent.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
                         st.plotly_chart(fig_sent, use_container_width=True)
                         
                     with c2:
@@ -666,6 +671,7 @@ def render_battle_mode():
                         if 'Persona' in combined_df.columns:
                             fig_pers = px.histogram(combined_df, x="Persona", color="Video", barmode="group",
                                                   color_discrete_map={'Video A': '#00CC96', 'Video B': '#EF553B'})
+                            fig_pers.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
                             st.plotly_chart(fig_pers, use_container_width=True)
 
                     st.divider()
@@ -731,7 +737,7 @@ def render_battle_mode():
                         # Use Plotly for a better look
                         fig = px.bar(emoji_df, x='Emoji', y='Count', title=title, 
                                      text='Count', color_discrete_sequence=[color])
-                        fig.update_layout(xaxis_title="", yaxis_title="", showlegend=False)
+                        fig.update_layout(xaxis_title="", yaxis_title="", showlegend=False, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
                         st.plotly_chart(fig, use_container_width=True)
                     
                     with ec1:
@@ -843,6 +849,7 @@ def render_channel_mode():
                              title="Positivity % Over Last 5 Videos",
                              hover_data=['Title'])
             fig_sent.update_traces(line_color='#00CC96')
+            fig_sent.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
             st.plotly_chart(fig_sent, use_container_width=True)
             
             # 2. Engagement Trend
@@ -850,6 +857,7 @@ def render_channel_mode():
             fig_eng = px.bar(trend_df, x='Published', y='Likes', 
                            title="Total Likes per Video",
                            hover_data=['Title'], color='Likes')
+            fig_eng.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color="#E1E8ED")
             st.plotly_chart(fig_eng, use_container_width=True)
             
             # Table
