@@ -160,7 +160,7 @@ st.markdown("""
         background: var(--glass) !important;
         border: 1px solid var(--glass-border) !important;
         border-radius: 4px !important;
-        color: white !important;
+        color: black !important;
         padding: 10px 16px !important;
     }
 
@@ -196,7 +196,7 @@ st.markdown("""
 
     [role="option"] {
         background-color: var(--glass) !important;
-        color: white !important;
+        color: black !important;
     }
     [role="option"]:hover { background-color: rgba(48, 54, 61, 1) !important; }
 
